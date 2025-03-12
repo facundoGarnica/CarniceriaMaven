@@ -1,0 +1,297 @@
+
+.mainFxmlClass {
+    /* No tiene estilos específicos, por lo que se puede dejar vacío */
+}
+
+/* Fondo general de la ventana */
+#Base {
+    -fx-background-color: #a7a7a7; /* Fondo gris suave */
+    -fx-border-color: #FDC266; /* Borde color naranja */
+    -fx-border-width: 5px; /* Grosor del borde */
+    -fx-border-radius: 5px; /* Bordes ligeramente redondeados */
+    -fx-padding: 5px; /* Espaciado interno */
+}
+
+/* Panel de Datos */
+.PanelDatos {
+    -fx-background-color: #FFFFFF; /* Fondo blanco puro */
+    -fx-border-color: #2C3E50; /* Azul profesional para bordes */
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+/* Panel general */
+.Panel {
+    -fx-background-color: linear-gradient(to bottom, #F8F9FA, #f96a46); /* Degradado claro */
+    -fx-background-radius: 15px; /* Bordes redondeados */
+    -fx-border-radius: 15px;
+    -fx-border-color: #CED4DA; /* Borde gris sutil */
+    -fx-border-width: 2px;
+    -fx-padding: 15px; /* Espaciado interno */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 3, 3); /* Sombra ligera */
+}
+
+/* Tabla de productos */
+.TableViewProductos,
+.TableViewVuelto {
+    -fx-padding: 5px;
+    -fx-border-width: 2px;
+}
+
+/* Tabla principal de productos */
+.TableViewProductos {
+    -fx-background-color: #FFFFFF; /* Fondo blanco */
+    -fx-border-color: #2C3E50; /* Azul profesional en el borde */
+}
+
+/* Tabla de vuelto */
+.TableViewVuelto {
+    -fx-background-color: #ECF0F1; /* Fondo gris suave */
+    -fx-border-color: #27AE60; /* Verde éxito en el borde */
+}
+
+/* Campo de entrada para el código de barras */
+#TextFieldBarCode {
+    -fx-background-color: #FFFFFF; /* Blanco puro */
+    -fx-border-color: #3498DB; /* Azul claro para enfoque */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 18px;
+    -fx-padding: 0px;
+}
+
+/* Títulos dentro de la ventana */
+.TextoTitulo {
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50; /* Azul profesional */
+    -fx-background-color: #ECF0F1; /* Fondo gris claro */
+    -fx-padding: 10px 20px; /* Añadido padding para un margen alrededor del texto */
+    -fx-background-radius: 8px; /* Bordes redondeados para el fondo */
+}
+
+/* Botón Volver */
+.botonVolver {
+    -fx-background-color: linear-gradient(to bottom, #D72638, #A12B2B); /* Naranja cálido */
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 10px;
+    -fx-border-radius: 10%;
+    -fx-background-radius: 10%;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-display: flex;
+    -fx-justify-content: center;
+    -fx-align-items: center;
+}
+
+.botonVolver:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF8C42, #FF6347);
+    -fx-border-color: #FF4500;
+}
+
+.botonVolver:pressed {
+    -fx-background-color: #FF4500;
+    -fx-border-color: #FFD700;
+    -fx-border-width: 4px;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+.botonVolver .arrow {
+    -fx-font-size: 15px;
+    -fx-padding: 0;
+    -fx-alignment: center;
+}
+
+/* Panel de datos con degradado */
+.PanelDeDatos {
+    -fx-background-color: linear-gradient(to right, #FFFFFF, #F1F3F5);
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #6C757D;
+    -fx-border-width: 2px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0, 4, 4);
+}
+
+/* Contenedor Hbox de información */
+.HboxInfo {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: #343A40;
+    -fx-border-width: 2px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 4, 4);
+}
+
+/* Letras de la información */
+.LetrasInfo {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Arial";
+    -fx-alignment: center;
+    -fx-padding: 5px 10px;
+    -fx-background-color: transparent;
+}
+/* Estilo de la tabla de datos */
+.TableDatos {
+    -fx-background-color: linear-gradient(to right, #FFFFFF, #F1F3F5);
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #6C757D;
+    -fx-border-width: 2px;
+    -fx-padding: 0px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0, 4, 4);
+    -fx-font-size: 22px; /* Tamaño de la fuente */
+    -fx-alignment: center; /* Centrar el texto */
+}
+
+.TableDatos .table-cell {
+    -fx-font-size: 22px;  /* Tamaño de la fuente de las celdas */
+    -fx-alignment: center; /* Centrar el texto dentro de las celdas */
+}
+
+
+/* Cabecera de la tabla */
+.TableDatos .column-header-background {
+    -fx-background-color: #fdc266;
+    -fx-background-radius: 20px 20px 0px 0px;
+    -fx-border-radius: 20px 20px 0px 0px;
+    -fx-padding: 0px;
+    -fx-margin: 0px;
+    -fx-border-width: 0px;
+}
+
+/* Cabecera de columnas */
+.TableDatos .column-header {
+    -fx-background-color: transparent;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center;
+    -fx-padding: 3px;
+}
+
+/* Celdas de la tabla */
+.TableDatos .table-row-cell {
+    -fx-background-color: #FFFFFF; /* Fondo blanco por defecto */
+    -fx-border-color: #DEE2E6; /* Color de borde */
+    -fx-border-width: 0 0 1px 0; /* Borde inferior */
+    -fx-padding: 10px; /* Relleno dentro de las celdas */
+    -fx-font-size: 14px; /* Tamaño de fuente */
+    -fx-alignment: center; /* Centrar el texto dentro de las celdas */
+}
+
+/* Filas alternas (grises) */
+.TableDatos .table-row-cell:odd {
+    -fx-background-color: #F8F9FA; /* Gris claro para filas impares */
+}
+
+/* Filas normales (blanco) */
+.TableDatos .table-row-cell:even {
+    -fx-background-color: #FFFFFF; /* Blanco para filas pares */
+}
+
+/* Opcional: resaltar el borde superior de las celdas */
+.TableDatos .table-row-cell:focused {
+    -fx-border-color: #007BFF; /* Color de borde cuando una celda está seleccionada */
+    -fx-border-width: 2px;
+}
+
+
+
+/* Botón Crear Ventas */
+#BotonCrearVentas {
+    -fx-background-color: linear-gradient(to bottom, #FF0000, #B20000);
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #8B0000;
+    -fx-border-width: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0, 2, 2);
+}
+
+#BotonCrearVentas:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF4C4C, #D10000);
+    -fx-border-color: #FF4500;
+    -fx-border-width: 4px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#BotonCrearVentas:pressed {
+    -fx-background-color: #8B0000;
+    -fx-border-color: #FFD700;
+    -fx-border-width: 4px;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Panel Título */
+.PaneTitulo {
+    -fx-background-color: linear-gradient(to bottom, #FF4C4C, #FF8C8C);
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 5px;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 2, 2);
+}
+
+.PaneTitulo:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF2D2D, #FF6B6B);
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 6, 0, 2, 2);
+}
+
+/* Botones Selección */
+.BotonesSeleccion {
+    -fx-background-color: linear-gradient(to right, #FF6A00, #FF9A8B);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 0px 24px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 4, 4);
+}
+
+.BotonesSeleccion:hover {
+    -fx-background-color: linear-gradient(to right, #FF5200, #FF7A8B);
+    -fx-cursor: hand;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-border-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0, 4, 4);
+}
+
+.BotonesSeleccion:pressed {
+    -fx-background-color: linear-gradient(to right, #FF3A00, #FF618B);
+    -fx-border-radius: 30px;
+    -fx-effect: inset 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Contenedor de clientes */
+.PanelClientes {
+    -fx-background-color: linear-gradient(to bottom, #D72638, #A12B2B);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 4);
+}
+
+.vbox {
+    -fx-background-color: linear-gradient(to right, #FF3A00, #FF5880);
+    -fx-border-color: #8B0000;
+    -fx-border-width: 2px;
+    -fx-background-radius: 20px;
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1010.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carne.MenuPrincipal.MenuPrincipalController">
+    <stylesheets>
+        <URL value="@../Css/estilo.css" />
+    </stylesheets>
+    <children>
+      <Pane prefHeight="1010.0" prefWidth="324.0" styleClass="PanelClientes">
+         <children>
+            <Pane layoutY="534.0" prefHeight="291.0" prefWidth="324.0" styleClass="PanelClientes">
+               <children>
+                  <VBox fx:id="vBoxOpciones11" layoutY="-1.0" prefHeight="213.0" prefWidth="256.0" spacing="25.0" styleClass="vbox" translateX="33.0" translateY="79.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Anotar Medias" />
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Ver Medias" />
+                        <Button layoutY="1.0" mnemonicParsing="false" onAction="#invocarNuevaVentana" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Ver ventas" />
+                     </children>
+                     <padding>
+                        <Insets left="38.0" top="37.0" />
+                     </padding>
+                  </VBox>
+                  <Pane prefHeight="288.0" prefWidth="324.0" styleClass="PanelClientes">
+                     <children>
+                        <Button fx:id="ButtonClick111" layoutX="34.0" layoutY="225.0" mnemonicParsing="false" onAction="#desplazarHaciaAbajo3" prefHeight="55.0" prefWidth="256.0" styleClass="PaneTitulo" text="Administrador" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <VBox fx:id="vBoxOpciones1" layoutX="36.0" layoutY="355.0" prefHeight="170.0" prefWidth="256.0" spacing="25.0" styleClass="vbox" visible="false">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="173.0" styleClass="BotonesSeleccion" text="Agregar produc." />
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" onAction="#invocarproductos" styleClass="BotonesSeleccion" text="Ver producto" />
+               </children>
+               <padding>
+                  <Insets left="38.0" top="37.0" />
+               </padding>
+            </VBox>
+            <Pane layoutY="239.0" prefHeight="299.0" prefWidth="324.0" styleClass="PanelClientes">
+               <children>
+                  <Button fx:id="ButtonClick11" layoutX="34.0" layoutY="238.0" mnemonicParsing="false" onAction="#desplazarHaciaAbajo2" prefHeight="55.0" prefWidth="256.0" styleClass="PaneTitulo" text="Productos" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane prefHeight="240.0" prefWidth="324.0" styleClass="PanelClientes">
+         <children>
+            <VBox fx:id="vBoxOpciones" layoutX="27.0" layoutY="-11.0" prefHeight="250.0" prefWidth="256.0" spacing="25.0" styleClass="vbox">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Crear pedido" />
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Ver pedidos" />
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Crear fiado" />
+                  <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="169.0" styleClass="BotonesSeleccion" text="Ver fiados" />
+               </children>
+               <padding>
+                  <Insets left="38.0" top="37.0" />
+               </padding>
+            </VBox>
+            <Pane prefHeight="240.0" prefWidth="324.0" styleClass="PanelClientes" />
+            <Button fx:id="ButtonClick" layoutX="27.0" layoutY="179.0" mnemonicParsing="false" onAction="#desplazarHaciaAbajo" prefHeight="55.0" prefWidth="256.0" styleClass="PaneTitulo" text="Clientes" />
+            <Button id="BotonCrearVentas" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" onAction="#abrirCrearVentas" prefHeight="86.0" prefWidth="313.0" text="Crear ventas">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane id="PanelInvocar" fx:id="PanelPrincipal" layoutX="325.0" prefHeight="1010.0" prefWidth="1596.0" />
+   </children>
+</AnchorPane>
