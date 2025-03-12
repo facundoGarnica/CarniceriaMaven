@@ -148,7 +148,7 @@
     -fx-border-width: 2px;
     -fx-padding: 0px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0, 4, 4);
-    -fx-font-size: 22px; /* Tamaño de la fuente */
+    -fx-font-size: 30px; /* Tamaño de la fuente */
     -fx-alignment: center; /* Centrar el texto */
 }
 
@@ -156,7 +156,6 @@
     -fx-font-size: 22px;  /* Tamaño de la fuente de las celdas */
     -fx-alignment: center; /* Centrar el texto dentro de las celdas */
 }
-
 
 /* Cabecera de la tabla */
 .TableDatos .column-header-background {
@@ -203,6 +202,35 @@
     -fx-border-color: #007BFF; /* Color de borde cuando una celda está seleccionada */
     -fx-border-width: 2px;
 }
+
+/* Estilo específico para la tabla con id TablitaDatos */
+#TablitaDatos.TableDatos {
+    -fx-font-size: 45px;  /* Tamaño de fuente más grande para TablitaDatos */
+    -fx-text-fill: black; /* Color de texto negro */
+    -fx-font-weight: bold; /* Fuente más gruesa */
+}
+
+/* Celdas específicas de la tabla con id TablitaDatos */
+#TablitaDatos.TableDatos .table-cell {
+    -fx-font-size: 45px;  /* Tamaño de fuente más grande en las celdas */
+    -fx-text-fill: black; /* Color de texto negro */
+    -fx-font-weight: bold; /* Fuente más gruesa */
+}
+
+/* Cabecera de la tabla con id TablitaDatos */
+#TablitaDatos.TableDatos .column-header {
+    -fx-font-size: 45px;  /* Tamaño de fuente más grande en la cabecera */
+    -fx-text-fill: black; /* Color de texto negro */
+    -fx-font-weight: bold; /* Fuente más gruesa */
+}
+
+/* Celdas de la tabla con id TablitaDatos */
+#TablitaDatos.TableDatos .table-row-cell {
+    -fx-font-size: 45px;  /* Tamaño de fuente más grande en las filas */
+    -fx-text-fill: black; /* Color de texto negro */
+    -fx-font-weight: bold; /* Fuente más gruesa */
+}
+
 
 
 
@@ -294,4 +322,7 @@
     -fx-border-color: #8B0000;
     -fx-border-width: 2px;
     -fx-background-radius: 20px;
+}
+#TablitaVueltos{
+    -fx-font-size: 60px;
 }

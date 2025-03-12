@@ -4,6 +4,8 @@
  */
 package carne.CrearVentas;
 
+import CarpetaClases.CalculadorVueltos.CalcularVuelto;
+import CarpetaClases.CalculadorVueltos.Transaccion;
 import CarpetaClases.DetalleVenta;
 import CarpetaClases.Producto;
 import CarpetaClases.Venta;
@@ -13,7 +15,10 @@ import DAO.VentaDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +28,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,8 +51,10 @@ public class CrearVentasController implements Initializable {
     private TextField CodigoRecibir;
 
     private Venta venta = new Venta();
+
+    //Variables para tableview de productos//
     @FXML
-    private TableView<Producto> TablaProductos;  // El TableView
+    private TableView<Producto> TablaProductos;  // TableView
     @FXML
     private TableColumn colNombre;  // Columna para el nombre
     @FXML
@@ -54,13 +63,24 @@ public class CrearVentasController implements Initializable {
     private TableColumn colPeso;  // Columna para el peso
     @FXML
     private TableColumn colTotal;  // Columna para el total
+    ///////////
+
+    //Variables para tableview de vueltos//
+    @FXML
+    private TableView<Transaccion> TablaVuelto;
+    @FXML
+    private TableColumn<Transaccion, String> colRecibir;
+    @FXML
+    private TableColumn<Transaccion, String> colDar;
+    /////////
+
     @FXML
     private Label MedioDePago;
     @FXML
     private Label TotalAPagar;
 
     ObservableList<Producto> productos;
-
+    ObservableList<CalcularVuelto> calcularvueltos;
     double sumar = 0;
 
     /**
@@ -68,15 +88,19 @@ public class CrearVentasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Platform.runLater(() -> CodigoRecibir.requestFocus());
+        TablaProductos.setFocusTraversable(false);
+        TablaVuelto.setFocusTraversable(false);
         //inicializar el observableList
         productos = FXCollections.observableArrayList();
-
+        calcularvueltos = FXCollections.observableArrayList();
         //asociar filas
         this.colNombre.setCellValueFactory(new PropertyValueFactory("Nombre"));
         this.colPrecio.setCellValueFactory(new PropertyValueFactory("Precio"));
         this.colPeso.setCellValueFactory(new PropertyValueFactory("Peso"));
         this.colTotal.setCellValueFactory(new PropertyValueFactory("Total"));
-
+        colRecibir.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDineroRecibido())); // Mostrar el dinero recibido
+        colDar.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVuelto()));  // Mostrar el vuelto
         // Detectar cambios en la escena del label MedioDePago (para F1 y F3)
         MedioDePago.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
@@ -89,7 +113,12 @@ public class CrearVentasController implements Initializable {
                         case F3 -> {
                             MedioDePago.setText("Virtual");
                         }
+                        case F5 -> {
+                            generarVenta();
+
+                        }
                     }
+
                 });
             }
         });
@@ -113,6 +142,7 @@ public class CrearVentasController implements Initializable {
         MedioDePago.setText("-----");
         TotalAPagar.setText("-----");
         TablaProductos.getItems().clear();
+        TablaVuelto.getItems().clear();
     }
 
     @FXML
@@ -144,7 +174,13 @@ public class CrearVentasController implements Initializable {
         String codigo = CodigoRecibir.getText();
 
         if (codigo.length() != 13) {
-            System.out.println("El código ingresado no es válido. Debe tener 13 dígitos.");
+            // Mostrar un mensaje de error si el código no tiene 13 dígitos
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error de Código");
+            alert.setHeaderText(null);
+            alert.setContentText("El código ingresado no es válido. Debe tener 13 dígitos.");
+            alert.showAndWait();  // Mostrar el alert y esperar que el usuario lo cierre
+
         } else {
             try {
                 // Extraer partes del código
@@ -157,20 +193,17 @@ public class CrearVentasController implements Initializable {
 
                 // Convertir peso a formato decimal usando float
                 Double peso = pesoImporteFloat / 1000.0f; // Dividir para obtener kg
+
                 // Mostrar el resultado
                 System.out.println("Código del producto: " + codigoInt);
                 System.out.println("Peso: " + peso + " kg");
 
                 // Llamar a BuscarProducto si lo necesitas
-                // BuscarProducto(Integer.parseInt(codigoProducto), peso, tipoProducto);
-                System.out.println(pesoImporte);
                 BuscarProducto(codigoInt, tipoProducto, peso);
             } catch (NumberFormatException e) {
                 System.out.println("Error: El código contiene caracteres no numéricos.");
             }
         }
-
-        // Limpiar siempre el TextField, sin importar si el código era válido o no
         CodigoRecibir.clear();
     }
 
@@ -190,17 +223,20 @@ public class CrearVentasController implements Initializable {
         } else {
             System.out.println("el produto es: " + ProductoEncontrado.getNombre());
         }
-        
+
         venta.getProductos().add(ProductoEncontrado);
 
         sumar = sumar + ProductoEncontrado.getTotal();
         double redondearSuma = Math.round(sumar / 10.0) * 10;
         String sumaStr = String.valueOf(redondearSuma);
         TotalAPagar.setText(sumaStr);
-        
+
         System.out.println("Peso aaaa: " + ProductoEncontrado.getPeso());
         System.out.println("Dinero aaa: " + ProductoEncontrado.getPrecio());
         MostrarProductos(ProductoEncontrado);
+        CalcularVuelto calcular = new CalcularVuelto();
+        calcular.CalcularVuelto(redondearSuma);
+        MostrarVueltos(calcular);
     }
 
     public void MostrarProductos(Producto Producto) {
@@ -210,6 +246,12 @@ public class CrearVentasController implements Initializable {
         //Mostrar el observableList en la tableview 
         this.TablaProductos.setItems(productos);
         ////////
+    }
+
+    public void MostrarVueltos(CalcularVuelto calcular) {
+        this.calcularvueltos.add(calcular);
+        this.TablaVuelto.setItems(FXCollections.observableArrayList(calcular.GetListaTransacciones())); // Agregar la lista de transacciones al TableView
+
     }
 
     public void GenerarDetalleVenta() {
@@ -231,7 +273,6 @@ public class CrearVentasController implements Initializable {
             //Mostrar el observableList en la tableview 
             this.TablaProductos.setItems(productos);
             ///////*/
-
             if (agregado) {
                 System.out.println("Detalle de venta guardado: Producto ID " + producto.getId()
                         + ", Peso: " + producto.getPeso()
@@ -246,6 +287,21 @@ public class CrearVentasController implements Initializable {
 
     @FXML
     public void generarVenta() {
+        // Comprobamos si el medio de pago o el total tienen el valor "--"
+        if (MedioDePago.getText().equals("------") || TotalAPagar.getText().equals("------")) {
+            // Crear una alerta de tipo ERROR
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Campos inválidos");
+            alert.setContentText("Debe ingresar un medio de pago y un total válidos.");
+
+            // Mostrar la alerta
+            alert.showAndWait();
+
+            return; // Detener la ejecución si alguna condición no se cumple
+        }
+
+        // Si las condiciones son válidas, proceder con la venta
         venta.setMedioDePago(MedioDePago.getText()); // Establecer el medio de pago
         venta.setTotal(sumar); // Establecer el total de la venta
         venta.setFecha(LocalDate.now()); // Establecer la fecha de la venta

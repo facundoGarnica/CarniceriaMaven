@@ -1,4 +1,5 @@
 DAO\CortesDAO.class
+CarpetaClases\CalculadorVueltos\CalcularVuelto.class
 carne\MenuPrincipal\MenuPrincipalController.class
 DAO\CatalogoProductoDAO.class
 CarpetaClases\Venta.class
@@ -23,6 +24,7 @@ DAO\FechaDAO.class
 ConexionDB\ConexionDB.class
 CarpetaClases\Producto.class
 carne\carniceriamaven\SystemInfo.class
+CarpetaClases\CalculadorVueltos\Transaccion.class
 carne\VerVentas\VerVentasController.class
 DAO\ProductoDAO.class
 carne\CrearVentas\CrearVentasController$1.class
